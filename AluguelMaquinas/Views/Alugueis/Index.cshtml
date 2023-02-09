@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AluguelMaquinas.Models.Aluguel>
 
 @{
-    ViewData["Title"] = "Index";    
+    ViewData["Title"] = "Index";
 }
 
 <h1 class="display-6 fw-bold">Lista de Alugueis</h1>
@@ -32,13 +32,25 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DiasAluguel)
-            </th>            
+            </th>
+            <th>
+                Valor Total
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
+            decimal tt = 0;
+            if (item.AluguelEquipamentos != null)
+            {
+                @foreach (var c in item.AluguelEquipamentos)
+                {
+                    tt = c.ValorDia + tt;
+                }
+                tt = tt * item.DiasAluguel;
+            }
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Cliente.Nome)
@@ -57,7 +69,10 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DiasAluguel)
-                </td>                
+                </td>
+                <td>
+                    @tt
+                </td>
                 <td>
                     <a class="text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">
                         <svg fill="#0080ff" width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M2,21H8a1,1,0,0,0,0-2H3.071A7.011,7.011,0,0,1,10,13a5.044,5.044,0,1,0-3.377-1.337A9.01,9.01,0,0,0,1,20,1,1,0,0,0,2,21ZM10,5A3,3,0,1,1,7,8,3,3,0,0,1,10,5ZM20.207,9.293a1,1,0,0,0-1.414,0l-6.25,6.25a1.011,1.011,0,0,0-.241.391l-1.25,3.75A1,1,0,0,0,12,21a1.014,1.014,0,0,0,.316-.051l3.75-1.25a1,1,0,0,0,.391-.242l6.25-6.25a1,1,0,0,0,0-1.414Zm-5,8.583-1.629.543.543-1.629L19.5,11.414,20.586,12.5Z"></path></g></svg>

@@ -23,7 +23,7 @@ namespace AluguelMaquinas.Controllers
         // GET: Alugueis
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Aluguel.Include(a => a.Cliente);            
+            var applicationDbContext = _context.Aluguel.Include(a => a.Cliente).Include(b => b.AluguelEquipamentos);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -65,9 +65,9 @@ namespace AluguelMaquinas.Controllers
                 _context.Add(aluguel);
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Index", "AlugueisEquipamentos", new { Id = aluguel.Id });                
+                return RedirectToAction("Index", "AlugueisEquipamentos", new { Id = aluguel.Id });
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", aluguel.ClienteId);            
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", aluguel.ClienteId);
             return View(aluguel);
         }
 
@@ -157,14 +157,14 @@ namespace AluguelMaquinas.Controllers
             {
                 _context.Aluguel.Remove(aluguel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AluguelExists(int id)
         {
-          return _context.Aluguel.Any(e => e.Id == id);
+            return _context.Aluguel.Any(e => e.Id == id);
         }
     }
 }
