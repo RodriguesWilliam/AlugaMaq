@@ -1,0 +1,75 @@
+﻿@model IEnumerable<AluguelMaquinas.Models.Aluguel>
+
+@{
+    ViewData["Title"] = "Index";    
+}
+
+<h1 class="display-6 fw-bold">Lista de Alugueis</h1>
+
+<p>
+    <a class="btn btn-primary my-2" asp-action="Create">
+        <svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-labelledby="cartAddIconTitle" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title id="cartAddIconTitle">Add do cart</title> <path d="M21.2922 6L19.9463 14.1627C19.8666 14.6457 19.4491 15 18.9596 15H7.04304C6.55355 15 6.136 14.6457 6.05636 14.1627L4.84851 6.83731C4.76887 6.35434 4.35133 6 3.86183 6H2"></path> <path d="M8 20C8.55228 20 9 19.5523 9 19C9 18.4477 8.55228 18 8 18C7.44772 18 7 18.4477 7 19C7 19.5523 7.44772 20 8 20Z"></path> <path d="M18 20C18.5523 20 19 19.5523 19 19C19 18.4477 18.5523 18 18 18C17.4477 18 17 18.4477 17 19C17 19.5523 17.4477 20 18 20Z"></path> <path d="M16 8H10"></path> <path d="M13 5V11"></path> </g></svg>
+        <br /><span>Novo</span>
+    </a>
+</p>
+<table class="table" id="tbalugueis">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnderecoAluguel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CepAluguel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MunicipioAluguel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataAluguel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiasAluguel)
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnderecoAluguel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CepAluguel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MunicipioAluguel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataAluguel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiasAluguel)
+                </td>                
+                <td>
+                    <a class="text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">
+                        <svg fill="#0080ff" width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M2,21H8a1,1,0,0,0,0-2H3.071A7.011,7.011,0,0,1,10,13a5.044,5.044,0,1,0-3.377-1.337A9.01,9.01,0,0,0,1,20,1,1,0,0,0,2,21ZM10,5A3,3,0,1,1,7,8,3,3,0,0,1,10,5ZM20.207,9.293a1,1,0,0,0-1.414,0l-6.25,6.25a1.011,1.011,0,0,0-.241.391l-1.25,3.75A1,1,0,0,0,12,21a1.014,1.014,0,0,0,.316-.051l3.75-1.25a1,1,0,0,0,.391-.242l6.25-6.25a1,1,0,0,0,0-1.414Zm-5,8.583-1.629.543.543-1.629L19.5,11.414,20.586,12.5Z"></path></g></svg>
+                    </a> |
+                    <a class="text-decoration-none" asp-action="Details" asp-route-id="@item.Id">
+                        <svg width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-labelledby="cartAddIconTitle" stroke="#0080ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title id="cartAddIconTitle">Add do cart</title> <path d="M21.2922 6L19.9463 14.1627C19.8666 14.6457 19.4491 15 18.9596 15H7.04304C6.55355 15 6.136 14.6457 6.05636 14.1627L4.84851 6.83731C4.76887 6.35434 4.35133 6 3.86183 6H2"></path> <path d="M8 20C8.55228 20 9 19.5523 9 19C9 18.4477 8.55228 18 8 18C7.44772 18 7 18.4477 7 19C7 19.5523 7.44772 20 8 20Z"></path> <path d="M18 20C18.5523 20 19 19.5523 19 19C19 18.4477 18.5523 18 18 18C17.4477 18 17 18.4477 17 19C17 19.5523 17.4477 20 18 20Z"></path> <path d="M16 8H10"></path> <path d="M13 5V11"></path> </g></svg>
+                    </a> |
+                    <a class="text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">
+                        <svg fill="#000000" width="32px" height="32px" viewBox="0 0 24 24" id="delete-user-2" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><line id="secondary" x1="18" y1="15" x2="21" y2="18" style="fill: none; stroke: #ff0000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="secondary-2" data-name="secondary" x1="21" y1="15" x2="18" y2="18" style="fill: none; stroke: #ff0000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><circle id="primary" cx="11" cy="8" r="5" style="fill: none; stroke: #0080ff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle><path id="primary-2" data-name="primary" d="M14,13.29A6.91,6.91,0,0,0,12,13H10a7,7,0,0,0-7,7,1,1,0,0,0,1,1H14" style="fill: none; stroke: #0080ff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

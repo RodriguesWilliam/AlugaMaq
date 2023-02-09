@@ -1,0 +1,58 @@
+﻿@model AluguelMaquinas.Models.Aluguel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="display-6 fw-bold">Aluguel - Novo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnderecoAluguel" class="control-label"></label>
+                <input asp-for="EnderecoAluguel" class="form-control" />
+                <span asp-validation-for="EnderecoAluguel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CepAluguel" class="control-label"></label>
+                <input asp-for="CepAluguel" class="form-control" />
+                <span asp-validation-for="CepAluguel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MunicipioAluguel" class="control-label"></label>
+                <input asp-for="MunicipioAluguel" class="form-control" />
+                <span asp-validation-for="MunicipioAluguel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAluguel" class="control-label"></label>
+                <input asp-for="DataAluguel" class="form-control" />
+                <span asp-validation-for="DataAluguel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiasAluguel" class="control-label"></label>
+                <input asp-for="DiasAluguel" class="form-control" />
+                <span asp-validation-for="DiasAluguel" class="text-danger"></span>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <a class="btn btn-primary my-2" asp-action="Index">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

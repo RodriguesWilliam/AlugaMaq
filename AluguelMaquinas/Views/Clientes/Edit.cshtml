@@ -1,0 +1,76 @@
+﻿@model AluguelMaquinas.Models.Cliente
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4 class="display-6 fw-bold">Cliente - Editar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row p-3">
+                <div class="col-md-6">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Documento" class="control-label"></label>
+                        <input asp-for="Documento" class="form-control" />
+                        <span asp-validation-for="Documento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Telefone" class="control-label"></label>
+                        <input asp-for="Telefone" class="form-control" />
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="EnderecoCobranca" class="control-label"></label>
+                        <input asp-for="EnderecoCobranca" class="form-control" />
+                        <span asp-validation-for="EnderecoCobranca" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="CepCobranca" class="control-label"></label>
+                        <input asp-for="CepCobranca" class="form-control" />
+                        <span asp-validation-for="CepCobranca" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="MunicipioCobranca" class="control-label"></label>
+                        <input asp-for="MunicipioCobranca" class="form-control" />
+                        <span asp-validation-for="MunicipioCobranca" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <a class="btn btn-primary my-2" asp-action="Index">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
